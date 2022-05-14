@@ -14,7 +14,25 @@ provider "yandex" {
   zone      = "ru-central1-a"
 }
 
+resource "yandex_dns_zone" "zone1" {
+  name        = "finaltask"
+  description = "Example public zone"
 
+  labels = {
+    label1 = "finaltask"
+  }
+
+  zone    = "example.finaltask.com."
+  public  = true
+}
+
+resource "yandex_dns_recordset" "rs1" {
+  zone_id = yandex_dns_zone.zone1.id
+  name    = "example.finaltask.com."
+  type    = "A"
+  ttl     = 200
+  data    = ["10.1.0.1"]
+}
 resource "yandex_compute_instance" "vm-1" {
   name = "demo1"
   platform_id = "standard-v3"
@@ -37,26 +55,6 @@ resource "yandex_compute_instance" "vm-1" {
 network_interface {
   subnet_id = yandex_vpc_subnet.subnet-1.id
   nat       = true
-}
-
-resource "yandex_dns_zone" "zone1" {
-  name        = "finaltask"
-  description = "Example public zone"
-
-  labels = {
-    label1 = "finaltask"
-  }
-
-  zone    = "example.finaltask.com."
-  public  = true
-}
-
-resource "yandex_dns_recordset" "rs1" {
-  zone_id = yandex_dns_zone.zone1.id
-  name    = "example.finaltask.com."
-  type    = "A"
-  ttl     = 200
-  data    = ["10.1.0.1"]
 }
 
   metadata = {
@@ -95,26 +93,6 @@ resource "yandex_compute_instance" "vm-2" {
 
 resource "yandex_vpc_network" "network-1" {
   name = "network1"
-}
-
-resource "yandex_dns_zone" "zone1" {
-  name        = "finaltask"
-  description = "Example public zone"
-
-  labels = {
-    label1 = "finaltask"
-  }
-
-  zone    = "example.finaltask.com."
-  public  = true
-}
-
-resource "yandex_dns_recordset" "rs1" {
-  zone_id = yandex_dns_zone.zone1.id
-  name    = "example.finaltask.com."
-  type    = "A"
-  ttl     = 200
-  data    = ["10.1.0.1"]
 }
 
 resource "yandex_vpc_subnet" "subnet-1" {
