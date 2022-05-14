@@ -39,6 +39,26 @@ network_interface {
   nat       = true
 }
 
+resource "yandex_dns_zone" "zone1" {
+  name        = "finaltask"
+  description = "Example public zone"
+
+  labels = {
+    label1 = "finaltask"
+  }
+
+  zone    = "example.finaltask.com."
+  public  = true
+}
+
+resource "yandex_dns_recordset" "rs1" {
+  zone_id = yandex_dns_zone.zone1.id
+  name    = "example.finaltask.com."
+  type    = "A"
+  ttl     = 200
+  data    = ["10.1.0.1"]
+}
+
   metadata = {
     ssh-keys = "ubuntu:${file("/keys/id_rsa.pub")}"
   }
@@ -75,6 +95,26 @@ resource "yandex_compute_instance" "vm-2" {
 
 resource "yandex_vpc_network" "network-1" {
   name = "network1"
+}
+
+resource "yandex_dns_zone" "zone1" {
+  name        = "finaltask"
+  description = "Example public zone"
+
+  labels = {
+    label1 = "finaltask"
+  }
+
+  zone    = "example.finaltask.com."
+  public  = true
+}
+
+resource "yandex_dns_recordset" "rs1" {
+  zone_id = yandex_dns_zone.zone1.id
+  name    = "example.finaltask.com."
+  type    = "A"
+  ttl     = 200
+  data    = ["10.1.0.1"]
 }
 
 resource "yandex_vpc_subnet" "subnet-1" {
