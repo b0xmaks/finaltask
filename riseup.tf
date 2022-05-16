@@ -53,10 +53,10 @@ resource "yandex_compute_instance" "vm-1" {
     }
   }
 
-//network_interface {
-//  subnet_id = yandex_vpc_subnet.subnet-1.id
-//  nat       = true
-//}
+network_interface {
+  subnet_id = yandex_vpc_subnet.default.id
+  nat       = true
+}
 
   metadata = {
     ssh-keys = "ubuntu:${file("/keys/id_rsa.pub")}"
@@ -83,10 +83,10 @@ resource "yandex_compute_instance" "vm-2" {
     }
   }
 
-//  network_interface {
-//    subnet_id = yandex_vpc_subnet.subnet-1.id
-//    nat       = true
-//  }
+  network_interface {
+    subnet_id = yandex_vpc_subnet.default.id
+    nat       = true
+  }
 
   metadata = {
     ssh-keys = "ubuntu:${file("/keys/id_rsa.pub")}"
