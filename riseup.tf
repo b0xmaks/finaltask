@@ -40,7 +40,7 @@ network_interface {
 }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("/key/id_rsa.pub")}"
   }
 }
 
@@ -69,7 +69,7 @@ resource "yandex_compute_instance" "vm-2" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("/key/id_rsa.pub")}"
   }
 }
 
