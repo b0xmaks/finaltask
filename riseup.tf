@@ -79,7 +79,7 @@ network_interface {
 resource "yandex_storage_object" "hosts" {
   bucket = "hosts"
   key    = "bulder-host.txt"
-  content = "${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}"
+  content = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
 }
 
 resource "yandex_compute_instance" "vm-2" {
