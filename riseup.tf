@@ -13,6 +13,8 @@ locals {
   region = "ru-central1-a"
   public_key = "/keys/id_rsa.pub"
   private_key = "/keys/id_rsa"
+  builder_host = "./hosts/builder"
+  stage_host = "./hosts/stage"
   bucket_name = "hosts"
 }
 
@@ -77,6 +79,7 @@ network_interface {
 resource "yandex_storage_object" "hosts" {
   bucket = "hosts"
   key    = "bulder-host.txt"
+  source = "${local.builder_host}"
   content = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
 }
 
