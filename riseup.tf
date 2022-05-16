@@ -25,7 +25,7 @@ provider "yandex" {
   zone      = local.region
 }
 
-resource "yandex_iam_service_account" "sa" {
+resource "yandex_iam_service_account" "sa-editor" {
   folder_id = local.folder_id
   name      = "tf-test-sa"
 }
@@ -79,8 +79,7 @@ network_interface {
 resource "yandex_storage_object" "hosts" {
   bucket = "hosts"
   key    = "bulder-host.txt"
-  source = "${local.builder_host}"
-  content = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+  content = "${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}"
 }
 
 resource "yandex_compute_instance" "vm-2" {
