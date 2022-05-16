@@ -14,30 +14,30 @@ provider "yandex" {
   zone      = "ru-central1-a"
 }
 
-resource "yandex_dns_zone" "zone1" {
-  name        = "finaltask"
-  description = "Example public zone"
+//resource "yandex_dns_zone" "zone1" {
+//  name        = "finaltask"
+//  description = "Example public zone"
 
-  labels = {
-    label1 = "finaltask"
-  }
+//  labels = {
+//    label1 = "finaltask"
+//  }
 
-  zone    = "example.finaltask.com."
-  public  = true
-}
+//  zone    = "example.finaltask.com."
+//  public  = true
+//}
 
-resource "yandex_dns_recordset" "rs1" {
-  zone_id = yandex_dns_zone.zone1.id
-  name    = "example.finaltask.com."
-  type    = "A"
-  ttl     = 200
-  data    = ["10.1.0.1"]
-}
+//resource "yandex_dns_recordset" "rs1" {
+//  zone_id = yandex_dns_zone.zone1.id
+//  name    = "example.finaltask.com."
+//  type    = "A"
+//  ttl     = 200
+//  data    = ["10.1.0.1"]
+//}
 resource "yandex_compute_instance" "vm-1" {
   name = "builder"
   platform_id = "standard-v3"
   zone        = "ru-central1-a"
-  hostname = "builder.example.finaltask.com"
+  hostname = "builder"
 
   resources {
     cores  = 2
@@ -67,7 +67,7 @@ resource "yandex_compute_instance" "vm-2" {
   name = "stage"
   platform_id = "standard-v3"
   zone        = "ru-central1-a"
-  hostname = "stage.example.finaltask.com"
+  hostname = "stage"
 
   resources {
     cores  = 2
