@@ -11,7 +11,7 @@ provider "yandex" {
   token     = "AQAAAAAGNKXEAATuwcIVyOyPpkhwp3iFVD_zW0w"
   cloud_id  = "b1g055n8e3mua2rcu67m"
   folder_id = "b1gfltbs1jo2gj8g55rp"
-  zone      = "ru-central1-a"
+  zone      = "ru-central1-b"
 }
 
 //resource "yandex_dns_zone" "zone1" {
@@ -36,7 +36,7 @@ provider "yandex" {
 resource "yandex_compute_instance" "vm-1" {
   name = "builder"
   platform_id = "standard-v3"
-  zone        = "ru-central1-a"
+  zone        = "ru-central1-b"
   hostname = "builder"
 
   resources {
@@ -66,7 +66,7 @@ network_interface {
 resource "yandex_compute_instance" "vm-2" {
   name = "stage"
   platform_id = "standard-v3"
-  zone        = "ru-central1-a"
+  zone        = "ru-central1-b"
   hostname = "stage"
 
   resources {
@@ -99,7 +99,7 @@ resource "yandex_vpc_network" "network-1" {
 
 resource "yandex_vpc_subnet" "subnet-1" {
   name           = "subnet1"
-  zone           = "ru-central1-a"
+  zone           = "ru-central1-b"
   network_id     = yandex_vpc_network.network-1.id
   v4_cidr_blocks = ["192.168.10.0/24"]
 }
