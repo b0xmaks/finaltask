@@ -25,7 +25,7 @@ provider "yandex" {
   zone      = local.region
 }
 
-resource "yandex_iam_service_account" "admin" {
+resource "yandex_iam_service_account" "sa" {
   folder_id = local.folder_id
   name      = "tf-test-sa"
 }
