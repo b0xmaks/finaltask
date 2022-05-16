@@ -8,8 +8,8 @@ terraform {
 }
 
 locals {
-  folder_id = "b1gg3fk5l7lmghchhs41"
-  image_id = "b1gfltbs1jo2gj8g55rp"
+  folder_id = "b1gfltbs1jo2gj8g55rp"
+  image_id = "fd86t95gnivk955ulbq8"
   region = "ru-central1-a"
   public_key = "/keys/id_rsa.pub"
   private_key = "/keys/id_rsa"
@@ -57,7 +57,7 @@ resource "yandex_compute_instance" "vm-1" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd86t95gnivk955ulbq8"
+      image_id = local.image_id
       type     = "network-ssd"
       size = 20
 
@@ -92,7 +92,7 @@ resource "yandex_compute_instance" "vm-2" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd86t95gnivk955ulbq8"
+      image_id = local.image_id
       type     = "network-ssd"
       size = 20
 
