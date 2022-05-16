@@ -8,7 +8,7 @@ terraform {
 }
 
 locals {
-  folder_id = "b1gfltbs1jo2gj8g55rp"
+  folder_id = "b1gkji82psakv2fsq2g4"
   image_id = "fd86t95gnivk955ulbq8"
   region = "ru-central1-a"
   public_key = "/keys/id_rsa.pub"
