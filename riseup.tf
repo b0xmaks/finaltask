@@ -110,11 +110,11 @@ resource "yandex_compute_instance" "vm-2" {
   
 }
 
-resource "yandex_storage_object" "hosts" {
-  bucket = "hosts"
-  key    = "stage-host.txt"
-  content = yandex_compute_instance.vm-2.network_interface.0.nat_ip_address
-}
+//resource "yandex_storage_object" "hosts" {
+//  bucket = "hosts"
+//  key    = "stage-host.txt"
+//  content = yandex_compute_instance.vm-2.network_interface.0.nat_ip_address
+//}
 
 resource "yandex_vpc_network" "network-1" {
   name = "network1"
