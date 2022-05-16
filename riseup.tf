@@ -49,7 +49,9 @@ network_interface {
     ssh-keys = "ubuntu:${file("${local.public_key}")}"
     user-data = templatefile("${path.module}/buildhost.txt", {
       <<EOF
-      "${yandex_compute_instance.vm-22.network_interface.0.nat_ip_address}"
+      
+      "${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}"
+      
       EOF
       })
   }   
