@@ -34,9 +34,10 @@ resource "yandex_dns_recordset" "rs1" {
   data    = ["10.1.0.1"]
 }
 resource "yandex_compute_instance" "vm-1" {
-  name = "demo1"
+  name = "builder"
   platform_id = "standard-v3"
   zone        = "ru-central1-a"
+  hostname = "builder.example.finaltask.com"
 
   resources {
     cores  = 2
@@ -63,9 +64,10 @@ network_interface {
 }
 
 resource "yandex_compute_instance" "vm-2" {
-  name = "demo2"
+  name = "stage"
   platform_id = "standard-v3"
   zone        = "ru-central1-a"
+  hostname = "stage.example.finaltask.com"
 
   resources {
     cores  = 4

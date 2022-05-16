@@ -20,10 +20,10 @@ pipeline {
       }
     }
 
-    stage('Terraform destroy') {
-      steps {
-        sh label: '', script: 'terraform destroy --auto-approve'
-      }
+  //  stage('Terraform destroy') {
+  //    steps {
+  //      sh label: '', script: 'terraform destroy --auto-approve'
+  //    }
     }
   }
 }

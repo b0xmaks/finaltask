@@ -1,6 +1,6 @@
 ---
 - name: prepare infrastructure
-  hosts: bld
+  hosts: "${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}"
   become: yes
   gather_facts: false
   tasks:
@@ -37,5 +37,5 @@
         volumes:
           - type: volume
             source: readyapp
-            target: /usr/local/tomcat/webapps
+            target: /usr/local/tomcat/webapps/hello.war
 
