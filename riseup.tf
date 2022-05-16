@@ -8,7 +8,7 @@ terraform {
 }
 
 locals {
-  folder_id = "b1gkji82psakv2fsq2g4"
+  folder_id = "b1g35u1fgpj0eea2lqig"
   image_id = "fd86t95gnivk955ulbq8"
   region = "ru-central1-a"
   public_key = "/keys/id_rsa.pub"
@@ -17,7 +17,7 @@ locals {
 
 provider "yandex" {
   token     = "AQAAAAAGNKXEAATuwcIVyOyPpkhwp3iFVD_zW0w"
-  cloud_id  = "b1g055n8e3mua2rcu67m"
+  cloud_id  = "b1gv3kn8mkcufn39kr9d"
   folder_id = local.folder_id
   zone      = local.region
 }
