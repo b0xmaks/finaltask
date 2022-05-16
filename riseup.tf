@@ -54,7 +54,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
 
 network_interface {
-  subnet_id = yandex_vpc_subnet.default-ru-central1-b.id
+  subnet_id = yandex_vpc_subnet.subnet-1.id
   nat       = true
 }
 
@@ -84,7 +84,7 @@ resource "yandex_compute_instance" "vm-2" {
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.default-ru-central1-b.id
+    subnet_id = yandex_vpc_subnet.subnet-1.id
     nat       = true
   }
 
@@ -94,8 +94,8 @@ resource "yandex_compute_instance" "vm-2" {
 }
 
 resource "yandex_vpc_network" "network-1" {
-  name = "network1"
-//  name = "default"
+//  name = "network1"
+  name = "default"
 }
 
 resource "yandex_vpc_subnet" "subnet-1" {
