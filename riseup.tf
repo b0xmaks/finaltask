@@ -70,8 +70,8 @@ resource "yandex_compute_instance" "vm-2" {
   hostname = "stage.example.finaltask.com"
 
   resources {
-    cores  = 4
-    memory = 4
+    cores  = 2
+    memory = 2
   }
 
   boot_disk {
