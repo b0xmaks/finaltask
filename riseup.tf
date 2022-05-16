@@ -66,7 +66,6 @@ resource "yandex_compute_instance" "vm-2" {
       image_id = local.image_id
       type     = "network-ssd"
       size = 20
-
     }
   }
 
@@ -78,7 +77,6 @@ resource "yandex_compute_instance" "vm-2" {
   metadata = {
     ssh-keys = "ubuntu:${file("${local.public_key}")}"
   }
-  
 }
 
 resource "yandex_vpc_network" "network-1" {
