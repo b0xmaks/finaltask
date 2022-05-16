@@ -47,13 +47,6 @@ network_interface {
 
   metadata = {
     ssh-keys = "ubuntu:${file("${local.public_key}")}"
-    user-data = templatefile("${path.module}/buildhost.txt", {
-      <<EOF
-      
-      "${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}"
-      
-      EOF
-      })
   }   
 }
 
@@ -84,11 +77,6 @@ resource "yandex_compute_instance" "vm-2" {
 
   metadata = {
     ssh-keys = "ubuntu:${file("${local.public_key}")}"
-    user-data = templatefile("${path.module}/stagehost.txt", {
-      <<EOF
-      "${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}"
-      EOF
-      })
   }
   
 }
@@ -102,6 +90,16 @@ resource "yandex_vpc_subnet" "subnet-1" {
   zone           = "ru-central1-a"
   network_id     = yandex_vpc_network.network-1.id
   v4_cidr_blocks = ["192.168.10.0/24"]
+}
+
+resource "local_file" "buildhost" {
+    content  = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
+    filename = "${path.module}/buildhost"
+}
+
+resource "local_file" "stagehost" {
+    content  = yandex_compute_instance.vm-2.network_interface.0.nat_ip_address
+    filename = "${path.module}/stagehost"
 }
 
 output "internal_ip_address_vm_1" {
