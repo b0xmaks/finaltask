@@ -59,8 +59,8 @@ resource "yandex_compute_instance" "vm-1" {
 //}
 
 network_interface {
-  network_id = "${yandex_vpc_network.enpn7v4n97lo5sibtk7a.id}"
-  subnet_ids = ["${yandex_vpc_subnet.e2lg8u6cpv2lkdbr07kp.id}"]
+  network_id = "${enpn7v4n97lo5sibtk7a}"
+  subnet_ids = ["${e2lg8u6cpv2lkdbr07kp}"]
   nat       = true
 }
 
@@ -94,8 +94,8 @@ resource "yandex_compute_instance" "vm-2" {
 //    nat       = true
 //  }
 network_interface {
-  network_id = "${yandex_vpc_network.enpn7v4n97lo5sibtk7a.id}"
-  subnet_ids = ["${yandex_vpc_subnet.e2lg8u6cpv2lkdbr07kp.id}"]
+  network_id = "${enpn7v4n97lo5sibtk7a}"
+  subnet_ids = ["${e2lg8u6cpv2lkdbr07kp}"]
   nat       = true
 }
 
