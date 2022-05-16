@@ -53,8 +53,14 @@ resource "yandex_compute_instance" "vm-1" {
     }
   }
 
+//network_interface {
+//  subnet_id = yandex_vpc_subnet.subnet-1.id
+//  nat       = true
+//}
+
 network_interface {
-  subnet_id = yandex_vpc_subnet.subnet-1.id
+  network_id = "${yandex_vpc_network.enpn7v4n97lo5sibtk7a.id}"
+  subnet_ids = ["${yandex_vpc_subnet.e2lg8u6cpv2lkdbr07kp.id}"]
   nat       = true
 }
 
@@ -83,27 +89,32 @@ resource "yandex_compute_instance" "vm-2" {
     }
   }
 
-  network_interface {
-    subnet_id = yandex_vpc_subnet.subnet-1.id
-    nat       = true
-  }
+//  network_interface {
+//    subnet_id = yandex_vpc_subnet.subnet-1.id
+//    nat       = true
+//  }
+network_interface {
+  network_id = "${yandex_vpc_network.enpn7v4n97lo5sibtk7a.id}"
+  subnet_ids = ["${yandex_vpc_subnet.e2lg8u6cpv2lkdbr07kp.id}"]
+  nat       = true
+}
 
   metadata = {
     ssh-keys = "ubuntu:${file("/keys/id_rsa.pub")}"
   }
 }
 
-resource "yandex_vpc_network" "network-1" {
+//resource "yandex_vpc_network" "network-1" {
 //  name = "network1"
-  name = "default"
-}
+//  name = "default"
+//}
 
-resource "yandex_vpc_subnet" "subnet-1" {
-  name           = "default"
-  zone           = "ru-central1-b"
-  network_id     = yandex_vpc_network.network-1.id
-  v4_cidr_blocks = ["10.129.0.0/24"]
-}
+//resource "yandex_vpc_subnet" "subnet-1" {
+//  name           = "default"
+//  zone           = "ru-central1-b"
+//  network_id     = yandex_vpc_network.network-1.id
+//  v4_cidr_blocks = ["10.129.0.0/24"]
+//}
 
 //output "internal_ip_address_vm_1" {
 //  value = yandex_compute_instance.vm-1.network_interface.0.ip_address
