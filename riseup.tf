@@ -99,22 +99,14 @@ resource "yandex_vpc_subnet" "subnet-1" {
   v4_cidr_blocks = ["192.168.10.0/24"]
 }
 
-resource "local_file" "buildhost" {
+resource "local_file" "makedhosts" {
     filename = "/etc/ansible/hosts" 
     content = <<EOT
     [buildhost]
     ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
-
-    EOT
-}
-
-resource "local_file" "stagehost" {
-    filename = "/etc/ansible/hosts" 
-    content = <<EOF
     [stagehost]
     ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
-    
-    EOF
+    EOT
 }
 
 output "internal_ip_address_vm_1" {
