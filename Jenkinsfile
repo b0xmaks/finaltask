@@ -21,9 +21,8 @@ pipeline {
     }
 
     stage('Terraform destroy') {
-      timeout(time: 2, unit: 'MINUTES')}
-      {
       steps {
+        timeout(time: 2, unit: 'MINUTES')
         sh label: '', script: 'terraform destroy --auto-approve'
       }
     }
