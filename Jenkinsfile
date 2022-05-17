@@ -20,12 +20,6 @@ pipeline {
       }
     }
 
-    stage('connect to builder, get && run playbook') {
-      steps {
-        sh label: '', script: 'ansible-playbook -i '(${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address})', builder.yml'
-      }
-    }
-
     stage('Terraform destroy') {
       steps {
         sh label: '', script: 'terraform destroy --auto-approve'
