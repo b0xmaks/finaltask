@@ -22,14 +22,14 @@ provider "yandex" {
   zone      = local.region
 }
 
-resource "null_resource" "hosts" {
+//resource "null_resource" "hosts" {
 //  provisioner "local-exec" {
 //    command = "sudo su"
 //  }   
-  provisioner "local-exec" {
-    command = "chmod 0777 /etc/ansible/hosts"
-  }
-}
+//  provisioner "local-exec" {
+//    command = "chmod 0777 /etc/ansible/hosts"
+//  }
+//}
 
 resource "yandex_compute_instance" "vm-1" {
   name = "builder"
