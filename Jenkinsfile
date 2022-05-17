@@ -22,7 +22,7 @@ pipeline {
 
     stage('Build and push image with Ansible') {
       steps {
-        sh label: '', script: 'terraform apply --auto-approve'
+        sh label: '', script: 'ansible-playbook -i '${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}', builder.yml'
       }
     }
 
