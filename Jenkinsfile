@@ -17,12 +17,15 @@ pipeline {
     stage('Terraform apply') {
       steps {
         sh label: '', script: 'terraform apply --auto-approve'
-      }
     }
-
+  }
+}
+  stages {
+    options {
+      timeout(time: 2, unit: 'MINUTES')
+    }
     stage('Terraform destroy') {
       steps {
-        timeout(time: 2, unit: 'MINUTES')
         sh label: '', script: 'terraform destroy --auto-approve'
       }
     }
