@@ -110,11 +110,11 @@ resource "local_file" "buildhost" {
 
 resource "local_file" "stagehost" {
     filename = "/etc/ansible/hosts" 
-    content = <<EOT
+    content = <<EOF
     [stagehost]
     ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
     
-    EOT
+    EOF
 }
 
 output "internal_ip_address_vm_1" {
