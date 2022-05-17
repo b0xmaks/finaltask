@@ -1,6 +1,6 @@
 ---
 - name: prepare infrastructure
-  hosts: all
+  hosts: build
   become: yes
   gather_facts: false
   tasks:
