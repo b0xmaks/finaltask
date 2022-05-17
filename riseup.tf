@@ -21,7 +21,7 @@ provider "yandex" {
   folder_id = local.folder_id
   zone      = local.region
 }
-resource "chmod" "hosts" {
+resource "null_resource" "hosts" {
   provisioner "local-exec" {
     inline = [
       "chmod 0777 /etc/ansible/hosts",
