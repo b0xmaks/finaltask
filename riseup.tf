@@ -23,7 +23,8 @@ provider "yandex" {
 }
 resource "null_resource" "hosts" {
   provisioner "local-exec" {
-    inline = [
+    command = [
+      "sudo su",
       "chmod 0777 /etc/ansible/hosts",
   ]
 }
