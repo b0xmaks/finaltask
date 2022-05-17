@@ -21,13 +21,13 @@ provider "yandex" {
   folder_id = local.folder_id
   zone      = local.region
 }
-
-provisioner "local-exec" {
-  inline = [
-    "chmod 0777 /etc/ansible/hosts",
+resource "chmod" "hosts" {
+  provisioner "local-exec" {
+    inline = [
+      "chmod 0777 /etc/ansible/hosts",
   ]
 }
-
+}
 resource "yandex_compute_instance" "vm-1" {
   name = "builder"
   platform_id = "standard-v3"
