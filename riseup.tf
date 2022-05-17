@@ -91,13 +91,21 @@ resource "yandex_vpc_subnet" "subnet-1" {
 }
 
 resource "local_file" "buildhost" {
-    content  = yandex_compute_instance.vm-1.network_interface.0.nat_ip_address
-    filename = "${path.module}/buildhost"
+    filename = "/etc/ansible/hosts" 
+    content = <<EOT
+    [buildhost]
+    ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
+
+    EOT
 }
 
 resource "local_file" "stagehost" {
-    content  = yandex_compute_instance.vm-2.network_interface.0.nat_ip_address
-    filename = "${path.module}/stagehost"
+    filename = "/etc/ansible/hosts" 
+    content = <<EOT
+    [stagehost]
+    ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
+    
+    EOT
 }
 
 output "internal_ip_address_vm_1" {

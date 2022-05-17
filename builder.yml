@@ -1,6 +1,6 @@
 ---
 - name: prepare infrastructure
-  hosts: "${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}"
+  hosts: all
   become: yes
   gather_facts: false
   tasks:
@@ -11,21 +11,21 @@
         update_cache: yes
 
       tasks:
-    - name: Ensure maven package is present
+    - name: ensure maven package is present
       apt:
         name: maven
         state: present
 
-    - name: Clone a github repository
+    - name: clone a github repository
       git:
         repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-        dest: /tmp/homework/
+        dest: /tmp/buildplace/
         clone: yes
         update: yes
 
-    - name: Build application
+    - name: build application
       command:
-        chdir: /tmp/homework/
+        chdir: /tmp/buildplace/
         cmd: mvn package -Dmaven.test.skip -T 1C
 
     - name: build image
@@ -38,4 +38,6 @@
           - type: volume
             source: readyapp
             target: /usr/local/tomcat/webapps/hello.war
+
+
 
