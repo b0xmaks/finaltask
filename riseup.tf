@@ -102,10 +102,10 @@ resource "yandex_vpc_subnet" "subnet-1" {
 resource "local_file" "makedhosts" {
     filename = "/etc/ansible/hosts" 
     content = <<EOT
-    [buildhost]
-    ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
-    [stagehost]
-    ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
+[build]
+${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
+[stage]
+${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
     EOT
 }
 
