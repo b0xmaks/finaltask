@@ -20,9 +20,9 @@ pipeline {
       }
     }
 
-    stage('Build and push image with Ansible') {
+    stage('connect to builder, get && run playbook') {
       steps {
-        sh label: '', script: 'ansible-playbook -i '${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}', builder.yml'
+        sh label: '', script: 'ansible-playbook -i '(${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address})', builder.yml'
       }
     }
 
