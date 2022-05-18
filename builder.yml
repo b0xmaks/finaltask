@@ -17,6 +17,11 @@
         name: docker
         state: present
 
+    - name: install git
+      pip:
+        name: git
+        state: present
+        
     - name: clone a github repository
       git:
         repo: https://github.com/b0xmaks/finaltask.git
