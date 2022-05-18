@@ -18,7 +18,7 @@
         state: present
 
     - name: sreate a data container
-        community.docker.docker_container:
+      community.docker.docker_container:
         name: go_finaltask
         image: b0xmaks/finaltask:latest
         state: present
