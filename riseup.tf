@@ -94,6 +94,7 @@ resource "local_file" "prepareansiblecfg" {
     filename = "/etc/ansible/ansible.cfg" 
     content = <<EOT
 [defaults]
+host_key_checking = False
 timeout = 3
     EOT
 }
