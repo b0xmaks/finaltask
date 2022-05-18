@@ -10,11 +10,9 @@
       apt:
         pkg:
         - curl
-        - python3-pip
+        - python
         - git
-        - docker-io
-        - docker-ce-cli
-        - containerd.io 
+        - docker.io
         state: present
 
     - name: clone a github repository
