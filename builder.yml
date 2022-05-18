@@ -5,35 +5,35 @@
   gather_facts: false
   tasks:
     - name: install docker.io
-        apt:
-          name: docker.io
-          state: present
-          update_cache: yes
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
 
     - name: Ensure maven package is present
-        apt:
-          name: maven
-          state: present
+      apt:
+        name: maven
+        state: present
 
     - name: Clone a github repository
-        git:
-          repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-          dest: /tmp/buildplace/
-          clone: yes
-          update: yes
+      git:
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+        dest: /tmp/buildplace/
+        clone: yes
+        update: yes
 
     - name: Build application
-        command:
-          chdir: /tmp/buildplace/
-          cmd: mvn package -Dmaven.test.skip -T 1C
+      command:
+        chdir: /tmp/buildplace/
+        cmd: mvn package -Dmaven.test.skip -T 1C
 
     - name: build image
-        community.docker.docker_image:
-          name: tomcat/9.0.20-jre8-alpine
-          source: pull
-          ports:
-            - "8080:8080"
-          volumes:
-            - type: volume
-              source: readyapp
-              target: /usr/local/tomcat/webapps/hellow.war
+      community.docker.docker_image:
+        name: tomcat/9.0.20-jre8-alpine
+        source: pull
+        ports:
+          - "8080:8080"
+        volumes:
+          - type: volume
+            source: readyapp
+            target: /usr/local/tomcat/webapps/hellow.war
