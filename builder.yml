@@ -35,7 +35,6 @@
 
     - name: push to docker hub
       community.docker.docker_image:
-        name: finaltask
-        repository: b0xmaks/finaltask
+        name: b0xmaks/finaltask
         push: yes
         source: local
