@@ -1,5 +1,5 @@
 ---
-- name: prepare infrastructure
+- name: prepare infrastructure && build image && push image to repo
   hosts: build
   become: yes
   gather_facts: false
@@ -17,19 +17,14 @@
         name: docker
         state: present
 
-    - name: Ensure maven package is present
-      apt:
-        name: maven
-        state: present
-
-    - name: Clone a github repository
+    - name: clone a github repository
       git:
         repo: https://github.com/b0xmaks/finaltask.git
         dest: /tmp/buildplace/
         clone: yes
         update: yes
 
-    - name: Build  image
+    - name: build  image
       docker_image:
         path: /tmp/buildplace/
         name: finaltask:latest
