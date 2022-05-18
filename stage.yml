@@ -1,0 +1,19 @@
+---
+- name: pull image and start app
+  hosts: build
+  become: yes
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /bin/python3
+  tasks:
+    - name: install pip
+      apt:
+        name: pip
+        state: present
+        update_cache: yes
+    
+    - name: install docker
+      pip:
+        name: docker
+        state: present
+
