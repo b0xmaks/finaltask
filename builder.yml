@@ -12,7 +12,7 @@
         - curl
         - python3-pip
         - git
-        - docker-ce
+        - docker-io
         - docker-ce-cli
         - containerd.io 
         state: present
