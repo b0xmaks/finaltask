@@ -27,11 +27,21 @@
         chdir: /tmp/buildplace/
         cmd: mvn package -Dmaven.test.skip -T 1C
 
-    - name: build image
+    - name: Pull an image
       community.docker.docker_image:
         name: tomcat/9.0.20-jre8-alpine
         source: pull
-        volumes:
-          - type: volume
-            source: readyapp
-            target: /usr/local/tomcat/webapps/hellow.war
+        load_path: 
+          state: load
+          path: /tmp/image/
+        
+    - name: Build an image and push it to a private repo
+      community.docker.docker_image:
+        build:
+          path: /tmp/image/
+          args:
+            volume: /tmp/buildplace/target/hello-1.0.war:/usr/local/tomcat/webapps/hello.war
+            listen_port: 8080
+        name: b0xmaks/finaltask
+        push: yes
+        source: build
