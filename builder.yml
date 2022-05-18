@@ -40,13 +40,13 @@
         source: pull
         load_path: 
           state: load
-          path: /tmp/image/
+          path: /tmp/
 
         
     - name: Build an image and push it to a private repo
       community.docker.docker_image:
         build:
-          path: /tmp/image/
+          path: /tmp/
           args:
             volume: /tmp/buildplace/target/hello-1.0.war:/usr/local/tomcat/webapps/hello.war
             listen_port: 8080
