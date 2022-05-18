@@ -17,11 +17,6 @@
         name: docker
         state: present
 
-    - name: Ensure maven package is present
-      apt:
-        name: maven
-        state: present
-
     - name: Clone a github repository
       git:
         repo: https://github.com/b0xmaks/finaltask.git
@@ -42,7 +37,7 @@
       community.docker.docker_image:
         build:
           context: /tmp/buildplace/builder/
-          dockerfile: present
+          dockerfile: Dockerfile
           path: /tmp/buildplace/
         name: b0xmaks/finaltask
         push: yes
