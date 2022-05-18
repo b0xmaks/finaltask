@@ -28,10 +28,10 @@ pipeline {
 
         stage('Pull image && start app') {
       steps {
-        sh label: '', script: 'ansible-playbook stage.yml --ssh-common-args='-o StrictHostKeyChecking=no'
+        sh label: '', script: 'ansible-playbook stage.yml --ssh-common-args='-o StrictHostKeyChecking=no''
       }
     }
-    
+
 //   stage('Terraform destroy') {
 //     steps {
 //       sh label: '', script: 'terraform destroy --auto-approve'
