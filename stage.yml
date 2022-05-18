@@ -1,6 +1,6 @@
 ---
 - name: pull image and start app
-  hosts: build
+  hosts: stage
   become: yes
   gather_facts: false
   vars:
