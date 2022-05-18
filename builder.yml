@@ -33,8 +33,14 @@
             listen_port: 8080
         source: build
 
+    - name: log into DockerHub
+      docker_login:
+        username: m.3anin@gmail.com
+        password: pLc2YkxqCx4kENF
+
     - name: push to docker hub
       community.docker.docker_image:
         name: finaltask
+        repository: b0xmaks/finaltask
         push: yes
         source: local
