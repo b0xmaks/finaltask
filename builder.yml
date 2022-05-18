@@ -34,6 +34,8 @@
         load_path: 
           state: load
           path: /tmp/image/
+        vars:
+          ansible_python_interpreter: /bin/python3
         
     - name: Build an image and push it to a private repo
       community.docker.docker_image:
