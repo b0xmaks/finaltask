@@ -20,22 +20,22 @@ pipeline {
       }
     }
     
-//    stage('Build app && push image') {
-//      steps {
-//        sh label: '', script: 'ansible-playbook builder.yml'
-//      }
-//    }
-
-//        stage('Pull image && start app') {
-//      steps {
-//        sh label: '', script: 'ansible-playbook stage.yml'
-//      }
-//    }
-    
-   stage('Terraform destroy') {
-     steps {
-       sh label: '', script: 'terraform destroy --auto-approve'
+    stage('Build app && push image') {
+      steps {
+        sh label: '', script: 'ansible-playbook builder.yml'
       }
     }
+
+        stage('Pull image && start app') {
+      steps {
+        sh label: '', script: 'ansible-playbook stage.yml'
+      }
+    }
+    
+//   stage('Terraform destroy') {
+//     steps {
+//       sh label: '', script: 'terraform destroy --auto-approve'
+//      }
+//    }
   }
 }
