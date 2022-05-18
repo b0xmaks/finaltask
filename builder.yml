@@ -3,17 +3,17 @@
   hosts: build
   become: yes
   gather_facts: false
-   tasks:
+  tasks:
     - name: install docker.io
         apt:
           name: docker.io
           state: present
           update_cache: yes
-  tasks:
+
     - name: Ensure maven package is present
         apt:
-        name: maven
-        state: present
+          name: maven
+          state: present
 
     - name: Clone a github repository
         git:
