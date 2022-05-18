@@ -24,7 +24,7 @@
         clone: yes
         update: yes
 
-    - name: build  image
+    - name: build image
       docker_image:
         path: /tmp/buildplace/
         name: finaltask:latest
