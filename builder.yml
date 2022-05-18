@@ -24,15 +24,10 @@
 
     - name: Clone a github repository
       git:
-        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+        repo: https://github.com/b0xmaks/finaltask.git
         dest: /tmp/buildplace/
         clone: yes
         update: yes
-
-    - name: Build application
-      command:
-        chdir: /tmp/buildplace/
-        cmd: mvn package -Dmaven.test.skip -T 1C
 
     - name: Pull an image
       community.docker.docker_image:
@@ -40,16 +35,15 @@
         source: pull
         load_path: 
           state: load
-          path: /tmp/
+          path: /tmp/buildplace/
 
         
     - name: Build an image and push it to a private repo
       community.docker.docker_image:
         build:
-          path: /tmp/
-          args:
-            volume: /tmp/buildplace/target/hello-1.0.war:/usr/local/tomcat/webapps/hello.war
-            listen_port: 8080
+          dockerfile: present
+            path: /tmp/buildplace/builder/Dockerfile
+          path: /tmp/buildplace/
         name: b0xmaks/finaltask
         push: yes
         source: build
