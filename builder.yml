@@ -3,14 +3,14 @@
   hosts: build
   become: yes
   gather_facts: false
-  tasks:
+    tasks:
     - name: install docker.io
       apt:
         name: docker.io
         state: present
         update_cache: yes
 
-      tasks:
+    tasks:
     - name: Ensure maven package is present
       apt:
         name: maven
