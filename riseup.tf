@@ -95,7 +95,6 @@ resource "local_file" "prepareansiblecfg" {
     content = <<EOT
 [defaults]
 host_key_checking = False
-timeout = 25
     EOT
 }
 
