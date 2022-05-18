@@ -6,20 +6,17 @@
   vars:
     ansible_python_interpreter: /bin/python3
   tasks:
-    - name: install pip
+    - name: Install a list of packages
       apt:
-        name: pip
+        pkg:
+        - pip
+        - git
+        - python
         state: present
-        update_cache: yes
-    
+
     - name: install docker
       pip:
         name: docker
-        state: present
-
-    - name: install git
-      apt:
-        name: git
         state: present
 
     - name: clone a github repository
