@@ -20,8 +20,8 @@ pipeline {
       }
     }
     
-    stage('Build app && push image') {
-      steps {
+//    stage('Build app && push image') {
+//      steps {
 //        sh label: '', script: 'ansible-playbook builder.yml'
 //      }
 //    }
