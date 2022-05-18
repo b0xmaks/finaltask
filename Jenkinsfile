@@ -20,17 +20,17 @@ pipeline {
       }
     }
     
-//    stage('Build app && push image') {
-//      steps {
-//        sh label: '', script: 'ansible-playbook builder.yml'
-//      }
-//    }
+    stage('Build app && push image') {
+      steps {
+        sh label: '', script: 'ansible-playbook builder.yml'
+      }
+    }
 
-//        stage('Pull image && start app') {
-//      steps {
-//        sh label: '', script: 'ansible-playbook stage.yml'
-//      }
-//    }
+        stage('Pull image && start app') {
+      steps {
+        sh label: '', script: 'ansible-playbook stage.yml'
+      }
+    }
     
 //   stage('Terraform destroy') {
 //     steps {
