@@ -94,13 +94,13 @@ resource "local_file" "makedhosts" {
     filename = "/etc/ansible/hosts" 
     content = <<EOT
 [build]
-${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address} ansible_connection=ssh ansible_ssh_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=${local.private_key} ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q ubuntu@${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}"'
+${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
 [build:vars]
-proxy=my_proxy:8080
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o ProxyCommand="ssh -o StrictHostKeyChecking=no -W [%h]:%p -q ubuntu@${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}"'
 [stage]
-${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address} ansible_connection=ssh ansible_ssh_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no' ansible_ssh_private_key_file=${local.private_key} ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q ubuntu@${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}"'
+${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
 [stage:vars]
-proxy=my_proxy:8080
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no -o ProxyCommand="ssh -o StrictHostKeyChecking=no -W [%h]:%p -q ubuntu@${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}"'
     EOT
 }
 
