@@ -11,11 +11,11 @@
         name: pip
         state: present
         update_cache: yes
+    
     - name: install docker
       pip:
         name: docker
         state: present
-        update_cache: yes
 
     - name: Ensure maven package is present
       apt:
