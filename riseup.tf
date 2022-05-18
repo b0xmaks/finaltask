@@ -94,9 +94,9 @@ resource "local_file" "makedhosts" {
     filename = "/etc/ansible/hosts" 
     content = <<EOT
 [build]
-${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
+${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address} ansible_connection=ssh ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 [stage]
-${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
+${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address} ansible_connection=ssh ansible_user=ubuntu ansible_ssh_common_args='-o StrictHostKeyChecking=no'
     EOT
 }
 

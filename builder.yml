@@ -5,7 +5,7 @@
   gather_facts: false
   vars:
     ansible_python_interpreter: /bin/python3
-  tasks:
+    tasks:
     - name: install pip
       apt:
         name: pip
