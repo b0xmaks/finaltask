@@ -90,12 +90,17 @@ resource "yandex_vpc_subnet" "subnet-1" {
   v4_cidr_blocks = ["192.168.10.0/24"]
 }
 
-resource "local_file" "makedhosts" {
-    filename = "/etc/ansible/hosts" 
+resource "local_file" "prepare_ansible.cfg" {
+    filename = "/etc/ansible/ansible.cfg" 
     content = <<EOT
 [defaults]
 host_key_checking = False
+    EOT
+}
 
+resource "local_file" "makedhosts" {
+    filename = "/etc/ansible/hosts" 
+    content = <<EOT
 [build]
 ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
 
