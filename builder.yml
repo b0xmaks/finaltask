@@ -9,9 +9,12 @@
     - name: Install a list of packages
       apt:
         pkg:
-        - pip
+        - curl
+        - python3-pip
         - git
-        - python
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io 
         state: present
 
     - name: install docker
