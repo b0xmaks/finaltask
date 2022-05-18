@@ -25,11 +25,17 @@ pipeline {
         sh label: '', script: 'ansible-playbook builder.yml'
       }
     }
-    
-    stage('Terraform destroy') {
+
+        stage('Pull image && start app') {
       steps {
-        sh label: '', script: 'terraform destroy --auto-approve'
+        sh label: '', script: 'ansible-playbook builder.yml'
       }
     }
+    
+//   stage('Terraform destroy') {
+//     steps {
+//       sh label: '', script: 'terraform destroy --auto-approve'
+//      }
+//    }
   }
 }
