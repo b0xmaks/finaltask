@@ -25,6 +25,13 @@
         update: yes
 
     - name: build image
-      docker_image:
-        path: /tmp/buildplace/
-        name: finaltask:latest
+      community.docker.docker_image:
+        name: finaltask
+        build:
+          path: /tmp/buildplace/
+          args:
+            listen_port: 8080
+        source: build
+#      docker_image:
+#        path: /tmp/buildplace/
+#        name: finaltask:latest
