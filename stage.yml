@@ -21,7 +21,6 @@
       community.docker.docker_container:
         name: go_finaltask
         image: b0xmaks/finaltask:latest
-        args:
-          published_port: 8080        
+        ports: 8080        
         state: started
 
