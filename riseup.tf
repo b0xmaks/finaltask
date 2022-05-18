@@ -99,6 +99,7 @@ ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
 [build:vars]
 ansible_ssh_user=ubuntu
 ansible_ssh_private_key_file=${local.private_key}
+host_key_checking = false
 
 [stage]
 ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
@@ -106,6 +107,7 @@ ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
 [stage:vars]
 ansible_ssh_user=ubuntu
 ansible_ssh_private_key_file=${local.private_key}
+host_key_checking = false
     EOT
 }
 
