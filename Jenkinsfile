@@ -22,13 +22,13 @@ pipeline {
     
     stage('Build app && push image') {
       steps {
-        sh label: '', script: 'ansible-playbook builder.yml'
+        sh label: '', script: 'ansible-playbook builder.yml --ssh-common-args='-o StrictHostKeyChecking=no''
       }
     }
 
         stage('Pull image && start app') {
       steps {
-        sh label: '', script: 'ansible-playbook stage.yml'
+        sh label: '', script: 'ansible-playbook stage.yml --ssh-common-args='-o StrictHostKeyChecking=no'
       }
     }
     
