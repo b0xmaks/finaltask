@@ -35,7 +35,7 @@
 
     - name: log into DockerHub
       docker_login:
-        username: m.3anin@gmail.com
+        username: b0xmaks
         password: pLc2YkxqCx4kENF
 
     - name: push to docker hub
