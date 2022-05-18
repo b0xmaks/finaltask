@@ -90,15 +90,6 @@ resource "yandex_vpc_subnet" "subnet-1" {
   v4_cidr_blocks = ["192.168.10.0/24"]
 }
 
-resource "local_file" "prepareansiblecfg" {
-    filename = "/etc/ansible/ansible.cfg" 
-    content = <<EOT
-[defaults]
-host_key_checking = False
-timeout = 25
-    EOT
-}
-
 resource "local_file" "makedhosts" {
     filename = "/etc/ansible/hosts" 
     content = <<EOT
