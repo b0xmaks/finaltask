@@ -15,7 +15,7 @@
         - docker-ce
         - docker-ce-cli
         - containerd.io 
-        state: started
+        state: present
 
     - name: clone a github repository
       git:
