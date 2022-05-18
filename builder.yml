@@ -43,7 +43,7 @@
         build:
           dockerfile: 
             state: present
-            path: /tmp/buildplace/builder/Dockerfile
+            path: /tmp/buildplace/builder/
           path: /tmp/buildplace/
         name: b0xmaks/finaltask
         push: yes
