@@ -8,4 +8,4 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone; 
 WORKDIR /tmp/boxfuse-sample-java-war-hello/
 RUN mvn package -Dmaven.test.skip -T 1C; \
     cp /tmp/boxfuse-sample-java-war-hello/target/hello-1.0.war /usr/local/tomcat/webapps/
-CMD ["sh", "catalina.sh", "run"]
+CMD ["catalina.sh", "run"]
