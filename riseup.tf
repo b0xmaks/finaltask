@@ -119,7 +119,7 @@ ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
 ansible_connection=ssh
 ansible_user=ubuntu
 ansible_ssh_private_key_file=/keys/id_rsa
-ansible_docker_extra_args='-o StrictHostKeyChecking=no'
+ansible_docker_extra_args="'-o StrictHostKeyChecking=no'"
     EOT
 }
 
