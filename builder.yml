@@ -31,8 +31,6 @@
       community.docker.docker_image:
         name: tomcat/9.0.20-jre8-alpine
         source: pull
-        ports:
-          - "8080:8080"
         volumes:
           - type: volume
             source: readyapp
