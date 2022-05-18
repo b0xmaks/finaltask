@@ -1,5 +1,5 @@
 ---
-- name: pull image and start app
+- name: pull image && start app on stage
   hosts: stage
   become: yes
   gather_facts: false
@@ -17,7 +17,7 @@
         name: docker
         state: present
 
-    - name: sreate a data container
+    - name: create a data container
       community.docker.docker_container:
         name: go_finaltask
         image: b0xmaks/finaltask:latest
