@@ -104,11 +104,19 @@ resource "local_file" "makedhosts" {
 [build]
 ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
 
+[build:vars]
+ansible_connection=ssh
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/keys/id_rsa
 
 
 [stage]
 ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
 
+[stage:vars]
+ansible_connection=ssh
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/keys/id_rsa
     EOT
 }
 
