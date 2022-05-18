@@ -17,6 +17,11 @@
         name: docker
         state: present
 
+    - name: Ensure maven package is present
+      apt:
+        name: maven
+        state: present
+
     - name: Clone a github repository
       git:
         repo: https://github.com/b0xmaks/finaltask.git
@@ -24,21 +29,7 @@
         clone: yes
         update: yes
 
-    - name: Pull an image
-      community.docker.docker_image:
-        name: tomcat:9.0.20-jre8-alpine
-        source: pull
-        load_path: 
-          state: load
-          path: /tmp/buildplace/
-
-        
-    - name: Build an image and push it to a private repo
-      community.docker.docker_image:
-        build:
-          context: /tmp/buildplace/builder/
-          dockerfile: Dockerfile
+    - name: Build  image
+      docker_image:
         path: /tmp/buildplace/
-        name: b0xmaks/finaltask
-        push: yes
-        source: build
+        name: finaltask:latest
