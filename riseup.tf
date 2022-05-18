@@ -28,15 +28,15 @@ resource "yandex_compute_instance" "vm-1" {
   zone        = "ru-central1-a"
 
   resources {
-    cores  = 2
-    memory = 2
+    cores  = 4
+    memory = 4
   }
 
   boot_disk {
     initialize_params {
       image_id = local.image_id
       type     = "network-ssd"
-      size = 20
+      size = 50
     }
   }
 
