@@ -13,16 +13,13 @@
         update_cache: yes
         cache_valid_time: 86400 #One day
         
-    - name: install pip
+    - name: install a list of packages
       apt:
-        name: pip
+        pkg:
+        - docker.io
+        - python3-docker
         state: present
-        update_cache: yes
-    
-    - name: install docker
-      pip:
-        name: docker
-        state: present
+      async: 600
 
     - name: create a data container
       community.docker.docker_container:
