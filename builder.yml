@@ -12,7 +12,7 @@
         update_cache: yes
         cache_valid_time: 86400 #One day
       async: 60
-      poll: 60
+
 
     - name: install a list of packages
       apt:
@@ -20,7 +20,7 @@
         - docker.io
         state: present
       async: 60
-      poll: 60
+
 
     - name: clone a github repository
       git:
@@ -29,7 +29,7 @@
         clone: yes
         update: yes
       async: 60
-      poll: 60
+
 
     - name: build image
       community.docker.docker_image:
@@ -40,14 +40,14 @@
             listen_port: 8080
         source: build
       async: 60
-      poll: 60
+
 
     - name: log into DockerHub
       docker_login:
         username: b0xmaks
         password: pLc2YkxqCx4kENF
       async: 60
-      poll: 60
+
 
     - name: push to docker hub
       community.docker.docker_image:
@@ -56,4 +56,3 @@
         push: yes
         source: local
       async: 60
-      poll: 60
