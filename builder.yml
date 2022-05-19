@@ -15,15 +15,8 @@
     - name: install a list of packages
       apt:
         pkg:
-        - curl
-        - python
-        - git
-        - pip
+        - docker.io
         state: present
-
-    - name: install docker
-      pip: 
-        name: docker
 
     - name: clone a github repository
       git:
