@@ -12,7 +12,7 @@
         update_cache: yes
         cache_valid_time: 86400 #One day
 
-    - name: Install a list of packages
+    - name: install a list of packages
       apt:
         pkg:
         - curl
@@ -21,9 +21,9 @@
         - pip
         state: present
 
-    - name: Install a list of packages
-      pip: docker
-      state: present
+    - name: install docker
+      pip: 
+        name: docker
 
     - name: clone a github repository
       git:
