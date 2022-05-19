@@ -96,7 +96,8 @@ resource "local_file" "prepareansiblecfg" {
 [defaults]
 
 host_key_checking = False
-timeout = 25
+private_key_file = /keys/id_rsa
+pipelining = True
 
 
 [ssh_connection]
