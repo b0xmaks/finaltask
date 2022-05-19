@@ -3,7 +3,7 @@ pipeline {
   tools {
 //      terraform "tf_local"
       terraform "tf"
-      ansible "Ans"
+      ansible "ans"
   }
 
   stages {
