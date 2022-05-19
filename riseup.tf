@@ -95,6 +95,7 @@ resource "local_file" "prepareansiblecfg" {
     content = <<EOT
 [defaults]
 
+timeout = 25
 host_key_checking = False
 private_key_file = /keys/id_rsa
 
