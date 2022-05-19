@@ -11,8 +11,8 @@ locals {
   folder_id = "b1gs97sf1m1od813qrbi"
   image_id = "fd86t95gnivk955ulbq8"
   region = "ru-central1-a"
-  public_key = "/keys/id_rsa.pub"
-  private_key = "/keys/id_rsa"
+  public_key = "/var/lib/jenkins/.ssh/id_rsa.pub"
+  private_key = "/var/lib/jenkins/.ssh/id_rsa"
  }
 
 provider "yandex" {
@@ -97,7 +97,7 @@ resource "local_file" "prepareansiblecfg" {
 
 timeout = 25
 host_key_checking = False
-private_key_file = /keys/id_rsa
+private_key_file = /var/lib/jenkins/.ssh/id_rsa
 
 [ssh_connection]
 scp_if_ssh = True
@@ -115,7 +115,7 @@ ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
 [build:vars]
 ansible_connection=ssh
 ansible_user=ubuntu
-ansible_ssh_private_key_file=/keys/id_rsa
+ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/id_rsa
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
 
@@ -125,7 +125,7 @@ ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
 [stage:vars]
 ansible_connection=ssh
 ansible_user=ubuntu
-ansible_ssh_private_key_file=/keys/id_rsa
+ansible_ssh_private_key_file=/var/lib/jenkins/.ssh/id_rsa
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
     EOT
