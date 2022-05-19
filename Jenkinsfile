@@ -21,18 +21,18 @@ pipeline {
     }
     
     stage('Build app && push image') {
-      options {
-                timeout(time: 600, unit: "SECONDS")
-      }      
+//      options {
+//                timeout(time: 600, unit: "SECONDS")
+//      }      
       steps {
         sh label: '', script: 'ansible-playbook builder.yml'
       }
     }
 
     stage('Pull image && start app') {
-      options {
-                timeout(time: 300, unit: "SECONDS")
-      }          
+//      options {
+//                timeout(time: 300, unit: "SECONDS")
+//      }          
       steps {
         sh label: '', script: 'ansible-playbook stage.yml'
       }
