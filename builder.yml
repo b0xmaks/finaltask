@@ -13,11 +13,15 @@
         cache_valid_time: 86400 #One day
       async: 60
 
-
-    - name: install a list of packages
+    - name: install docker
       apt:
-        pkg:
-        - docker.io
+        name: python3-docker
+        state: present
+      async: 60
+
+    - name: install docker
+      pip:
+        name: docker
         state: present
       async: 60
 
