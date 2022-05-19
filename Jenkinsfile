@@ -34,7 +34,7 @@ pipeline {
                 timeout(time: 300, unit: "SECONDS")
       }          
       steps {
-        sh label: '', script: 'ansible-playbook builder.yml'
+        sh label: '', script: 'ansible-playbook stage.yml'
       }
     }
 
