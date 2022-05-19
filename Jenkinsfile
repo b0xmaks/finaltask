@@ -1,8 +1,8 @@
 pipeline {
   agent any
   tools {
-      terraform "tf_local"
-//    terraform "tf"
+//      terraform "tf_local"
+      terraform "tf"
   }
 
   stages {
@@ -25,7 +25,7 @@ pipeline {
 //                timeout(time: 600, unit: "SECONDS")
 //      }      
       steps {
-        ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, playbook: 'builder.yml', sudoUser: null, vaultCredentialsId: 'id_rsa_private'
+        sh label: '', script: 'ansible-playbook builder.yml'
       }
     }
 
@@ -34,7 +34,7 @@ pipeline {
 //                timeout(time: 300, unit: "SECONDS")
 //      }          
       steps {
-        ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, playbook: 'stage.yml', sudoUser: null, vaultCredentialsId: 'id_rsa_private'
+        sh label: '', script: 'ansible-playbook stage.yml'
       }
     }
 
