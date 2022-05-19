@@ -25,7 +25,7 @@ pipeline {
 //                timeout(time: 600, unit: "SECONDS")
 //      }      
       steps {
-        sh label: '', script: 'ansible-playbook builder.yml'
+        ansiblePlaybook become: true, colorized: true, disableHostKeyChecking: true, installation: 'ans', playbook: 'builder.yml', vaultCredentialsId: 'jenkins_id_rsa'
       }
     }
 
@@ -34,7 +34,7 @@ pipeline {
 //                timeout(time: 300, unit: "SECONDS")
 //      }          
       steps {
-        sh label: '', script: 'ansible-playbook stage.yml'
+        ansiblePlaybook become: true, colorized: true, disableHostKeyChecking: true, installation: 'ans', playbook: 'stage.yml', vaultCredentialsId: 'jenkins_id_rsa'
       }
     }
 
