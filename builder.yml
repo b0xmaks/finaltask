@@ -19,7 +19,12 @@
         - python
         - git
         - pip
-        - docker.io
+        state: present
+
+    - name: Install a list of packages
+      pip:
+        pkg:
+        - docker
         state: present
 
     - name: clone a github repository
