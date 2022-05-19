@@ -6,13 +6,20 @@
   vars:
     ansible_python_interpreter: /bin/python3
   tasks:
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #One day
+        
     - name: Install a list of packages
       apt:
         pkg:
         - curl
         - python
         - git
-        - docker.io
+        - pip
         state: present
 
     - name: clone a github repository
