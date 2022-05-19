@@ -100,7 +100,7 @@ host_key_checking = False
 private_key_file = /keys/id_rsa
 
 [ssh_connection]
-
+scp_if_ssh = True
 ssh_args = -o ServerAliveInterval=30
 
     EOT
