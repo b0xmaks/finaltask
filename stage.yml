@@ -19,7 +19,6 @@
         - docker.io
         - python3-docker
         state: present
-#      async: 600
 
     - name: create a data container
       community.docker.docker_container:
