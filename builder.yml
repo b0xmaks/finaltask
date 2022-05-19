@@ -11,7 +11,7 @@
         upgrade: yes
         update_cache: yes
         cache_valid_time: 86400 #One day
-      async: 60
+      async: 600
 
 
     - name: install a list of packages
@@ -20,7 +20,7 @@
         - docker.io
         - python3-docker
         state: present
-      async: 60
+      async: 600
 
 
     - name: clone a github repository
@@ -29,7 +29,7 @@
         dest: /tmp/buildplace/
         clone: yes
         update: yes
-      async: 60
+      async: 600
 
 
     - name: build image
@@ -40,14 +40,14 @@
           args:
             listen_port: 8080
         source: build
-      async: 300
+      async: 600
 
 
     - name: log into DockerHub
       docker_login:
         username: b0xmaks
         password: pLc2YkxqCx4kENF
-      async: 60
+      async: 600
 
 
     - name: push to docker hub
