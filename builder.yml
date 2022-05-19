@@ -2,7 +2,7 @@
 - name: prepare infrastructure && build image && push image to repo
   hosts: build
   become: yes
-  gather_facts: false
+  gather_facts: no
   vars:
     ansible_python_interpreter: /bin/python3
   tasks:
