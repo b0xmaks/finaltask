@@ -31,7 +31,7 @@ pipeline {
 
     stage('Pull image && start app') {
       options {
-                timeout(time: 600, unit: "SECONDS")
+                timeout(time: 300, unit: "SECONDS")
       }          
       steps {
         sh label: '', script: 'ansible-playbook builder.yml'
