@@ -25,7 +25,7 @@ pipeline {
 //                timeout(time: 600, unit: "SECONDS")
 //      }      
       steps {
-        ansiblePlaybook becomeUser: 'user', colorized: true, credentialsId: 'jenkins-ubuntu-privat', disableHostKeyChecking: true, installation: 'ans', playbook: 'builder.yml'
+        ansiblePlaybook become: true, colorized: true, credentialsId: 'jenkins-ubuntu-privat', disableHostKeyChecking: true, installation: 'ans', playbook: 'builder.yml', vaultCredentialsId: 'id_rsa_private'
       }
     }
 
@@ -34,7 +34,7 @@ pipeline {
 //                timeout(time: 300, unit: "SECONDS")
 //      }          
       steps {
-        ansiblePlaybook becomeUser: 'user', colorized: true, credentialsId: 'jenkins-ubuntu-privat', disableHostKeyChecking: true, installation: 'ans', playbook: 'stage.yml'
+        ansiblePlaybook become: true, colorized: true, credentialsId: 'jenkins-ubuntu-privat', disableHostKeyChecking: true, installation: 'ans', playbook: 'stage.yml', vaultCredentialsId: 'id_rsa_private'
       }
     }
 
