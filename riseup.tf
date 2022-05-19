@@ -93,7 +93,15 @@ resource "yandex_vpc_subnet" "subnet-1" {
 resource "local_file" "prepareansiblecfg" {
     filename = "/etc/ansible/ansible.cfg" 
     content = <<EOT
+[defaults]
 
+timeout = 25
+host_key_checking = False
+private_key_file = /keys/jenkins/id_rsa
+
+[ssh_connection]
+scp_if_ssh = True
+ssh_args = -o ServerAliveInterval=30
 
     EOT
 }
@@ -104,9 +112,21 @@ resource "local_file" "makedhosts" {
 [build]
 ${yandex_compute_instance.vm-1.network_interface.0.nat_ip_address}
 
+[build:vars]
+ansible_connection=ssh
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/keys/jenkins/id_rsa
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
 
 [stage]
 ${yandex_compute_instance.vm-2.network_interface.0.nat_ip_address}
+
+[stage:vars]
+ansible_connection=ssh
+ansible_user=ubuntu
+ansible_ssh_private_key_file=/keys/jenkins/id_rsa
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
     EOT
 }
