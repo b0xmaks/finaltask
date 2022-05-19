@@ -94,8 +94,15 @@ resource "local_file" "prepareansiblecfg" {
     filename = "/etc/ansible/ansible.cfg" 
     content = <<EOT
 [defaults]
+
 host_key_checking = False
-timeout = 3
+timeout = 25
+
+
+[ssh_connection]
+
+ssh_args = -o ServerAliveInterval=30
+
     EOT
 }
 
@@ -120,6 +127,7 @@ ansible_connection=ssh
 ansible_user=ubuntu
 ansible_ssh_private_key_file=/keys/id_rsa
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
     EOT
 }
 
