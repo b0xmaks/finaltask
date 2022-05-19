@@ -1,8 +1,8 @@
 pipeline {
   agent any
   tools {
-//      terraform "tf_local"
-      terraform "tf"
+      terraform "tf_local"
+//    terraform "tf"
   }
 
   stages {
